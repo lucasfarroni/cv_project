@@ -1,21 +1,75 @@
-version: '3'
+version: '3.8'
 
+# Services
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
-      POSTGRES_USER: ${POSTGRES_USER:-symfony}
+  # Nginx Service
+  nginx:
+    image: nginx:1.19
+    ports:
+      - 8102:80
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - ./:/var/www/php
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - internal
+    depends_on:
+      - php
+
+  php:
+    build: ./.docker/php
+    working_dir: /var/www/php
+    volumes:
+      - ./:/var/www/php
+      - ./.docker/php/config/docker-post-max-size.ini:/usr/local/etc/php/php.ini
+    networks:
+      internal:
+        aliases:
+          - php.internal
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:8
+    networks:
+      internal:
+        aliases:
+          - mysql.internal
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cv_projet
+      UPLOAD_LIMIT: 32M
+    ports:
+      - 33102:3306
+    volumes:
+      - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      interval: 5s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5
+    networks:
+      - internal
+    ports:
+      - 9102:80
+    environment:
+      PMA_HOST: mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mailer:
+    image: schickling/mailcatcher
+    container_name: mailcatcher
+    ports: [ 1025, 1080 ]
+    networks:
+      - internal
+
+networks:
+  internal:
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  db-data:
-###< doctrine/doctrine-bundle ###
+  mysqldata:
