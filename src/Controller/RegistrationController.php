@@ -22,7 +22,8 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        $firstNameOfUser= $user.getFirstName();
+        var_dump($firstNameOfUser);
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -33,7 +34,7 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager->persist($user);
-            $entityManager->flush();//inscrit dans la base
+            $entityManager->flush();
             // do anything else you need here, like send an email
 
             return $userAuthenticator->authenticateUser(
