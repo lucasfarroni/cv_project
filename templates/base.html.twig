@@ -35,10 +35,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('app_logout') }}" onclick="return confirm('are u sure?')">Disconnect</a>
                             </li>
-                        {% endif %}
+
+                        {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('app_login') }}">Connect</a>
+                            <a class="nav-link" href="{{ url('app_login') }}">Connect/book for admin</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}list projet{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-3"></div>
+
+        <video width="320" height="240" controls>
+            <source src="{{ projets.Video }}" type="video/mp4">
+
+            Votre explorateur ne supporte pas la balise video.
+        </video>
+    </div>
+{% endblock %}
