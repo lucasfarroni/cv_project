@@ -16,7 +16,7 @@ services:
       - php
 
   php:
-    build: ./.docker/php
+    build: ../dockerServer/.docker/php
     working_dir: /var/www/php
     volumes:
       - ./:/var/www/php
