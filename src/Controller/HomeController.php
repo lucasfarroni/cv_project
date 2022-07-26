@@ -15,4 +15,10 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    #[Route('/upload', name: 'upload')]
+    public function upload(): Response
+    {
+        return $this->render('upload_video/index.html.twig');
+    }
 }
