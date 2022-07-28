@@ -15,8 +15,18 @@ class UserController extends AbstractController
     #[Route('/add', name: 'app_user.add')]
     public function addUser(ManagerRegistry $doctrine): Response
     {
+
+        $entityManager = $doctrine->getManager();
+        $user = new User();
+        $user->setFirstname('toto');
+        $user->setEmail('toto@hotmail.fr');
+        $user->setPassword('toto');
+        //Ajouter l'operation de la personne dans ma transaction si on lui precise l'id on pourras modifier un user en ^particulier
+        $entityManager->persist($user);
+        $entityManager->flush();
+        //execute la transaction
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+            'user' => $user,
         ]);
     }
 
