@@ -1,2 +1,12 @@
 {% extends 'base.html.twig' %}
-
+{% block body %}
+<div class="container">
+    <div class="imgLion">
+        <img src="{{ asset('image/lion.png') }}" class="img-fluid" alt="Responsive image" >
+    </div>
+    <div class="blockDev">
+        <div class="text">test</div>
+        <div class="btnAccess"><button class="btn-3"><span>Hover Me</span></button></div>
+    </div>
+</div>
+{% endblock %}
