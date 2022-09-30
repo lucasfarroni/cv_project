@@ -33,11 +33,18 @@ body .imgLion{
 body .container{
     display: flex;
     align-items: center;
-}
 
+}
+body .displayButton{
+    display: flex;
+}
 body .blockDev{
     border: solid;
+    margin-left:10% ;
 }
+
+
+//###buttonn####
 button{
     display: inline-block;
     position: relative;
