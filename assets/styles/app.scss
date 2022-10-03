@@ -28,7 +28,7 @@ body .navbar-toggler{
 body .imgLion{
     margin-top: 100px;
     border: solid;
-    width:40% ;
+    width:45% ;
 }
 body .container{
     display: flex;
@@ -45,10 +45,7 @@ body .blockDev{
 }
 
 //text home
-.text{
-    text-align: center;
-    text-overflow:ellipsis;
-}
+
 //###buttonn####
 .displayButton button{
     display: inline-block;
@@ -129,4 +126,21 @@ body .blockDev{
 }
 
 
+@media only screen and (max-width: 800px) {
+    .container-sm, .container{
+        flex-direction: column;
+    }
+    body .blockDev{
+        margin-left: 0;
+    }
+
+    .displayButton {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body .imgLion{
+        width:50% ;
+    }
+}
 
