@@ -1,0 +1,206 @@
+########################TEST unitaire phpUnit
+plusieurs extends possible pour test differente partie
+TEST case
+KernelTestCase pour test fonctionnelle
+WebTestCase test controlleur requete etc
+
+test bdd
+###########################################
+composer gestionnaire de dependance
+composer require --dev symfony/web-profiler-bundle debuger de php sur symfony 1
+
+php -S localhost:8000 -t public  commande lancement symfony
+
+composer require symfony/maker-bundle --dev  2 commande pour installer le maker de controller
+
+symfony console make:controller commande pour creer un controller
+
+dd($request);
+affiche l'objet request avec les config et retour de la reponse
+##############docker############################"
+sudo docker-compose up -d commande pour lancer le docker et le creer
+obtenir une image docker
+
+
+docker compose exec php bash->
+pour rentrer dans le doccker  utiliser des commande car le phpmyadmin
+est dans le docker et ne possede pas la meme adresse ip
+
+################################################
+composer require symfony/asset  3 pour utiliser asset dans les links
+
+doctrine orm traducteur de langage php en orienté objet interaction avec la bdd plus facile
+
+composer require twig ,  pour installer le package twig 3
+http://localhost:8102/
+
+
+web pack encore
+ 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 key github
+
+asset fct twig qui permet d'avoir un chemin relatif au dossier public
+
+ npm run watch compile le css et js en à chaque mj
+
+composer require symfony/translation module de traduction
+
+########################BDD######################
+migration pousse les objets dans la bdd php bin/console doctrine:migrations:generate
+entity class qui contient des infos pour faire le lien entre table et objet
+besoin de orm pour utiliser entity object relation mapper
+composer require symfony/orm
+
+symfony console make:entity   permet de creer une class entity pour faire le lien avec la base de donnée
+par exemple class entity personne va creer une table de la bdd
+
+bdd
+compte user
+DATABASE_URL="mysql://cv_projet:azerty@mysql/cv_projet?serverVersion=5.7&charset=utf8mb4"
+
+symfony console make:entity firstname prenom
+pour modifier et ajouter des attributs dans ma classe
+))
+_ jmmmmmmmmmmmmmmmmmmmmmmmmmm
+à faire dans le docker ->
+php bin/console make:migration permet de creer un dossier de migration pour pouvoir ensuite l'envoyer
+php bin/console doctrine:migrations:migrate permet d executer le code d'envoie en bdd
+
+entity manager
+
+php bin/console doctrine:schema:update --force    pour update bdd
+##############################################""
+symfony new --full newProjet projet-lts --version=lts derniere version stable de symfony
+
+sudo apt-get -y install php-intl
+
+###################################admininterface#################
+composer require easycorp/easyadmin-bundle
+symfony console make:admin:dashboard
+ symfony console make:admin:crud creer le crud de l'admin
+
+
+#######################securité############################"
+composer require security
+creation de user à securisé php bin/console make:user
+formulaire de connexion /enregistrement symfony console make:registration-form
+faille csrf https://fr.barracuda.com/glossary/csrf
+
+##########################formulaire#######################################
+dans config/packages/twig.yaml ajouté
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ['bootstrap_5_layout.html.twig']
+when@test:
+    twig:
+        strict_variables: true
+pour mettr een form les form avec bootstrap
+
+
+pour creer un formulaire
+php bin/console make:form
+lié une une entity
+crée un controller
+et creer le form de dedans
+##############################"
+section.container>div.row>div.col
+=
+ <section class="container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </section>
+    date de creation d entreprise
+
+###################WEBPACK################
+composer require symfony/webpack-encore-bundle
+yarn install
+yarn add @symfony/webpack-encore --dev
+yarn add bootstrap --dev
+yarn add -D sass-loader sass webpack
+npm install -g sass
+yarn add admin-lte@^3.2
+yarn add @popperjs/core
+Popper. js est un moteur de positionnement, il a pour but de calculer la position d'un élément pour permettre de le positionner à proximité d'un élément de référence donné
+npm install jquery
+doc : https://www.devenir-webmaster.com/V2/TUTO/CHAPITRE/INTRODUCTION/06-jquery/
+npm i @fortawesome/fontawesome-free
+
+config phpstorm npm /script/watch
+##############################
+
+######entity manager et persistance################"
+https://www.youtube.com/watch?v=ohpVqzkR3h8&list=PLl3CtU4THqPawV0hRF8Qqn0RVEHSjYgfy&index=26
+video explication pour le requetage de la bdd
+ $entityManager = $doctrine->getManager();
+        $user = new User();
+        $user->setFirstname('toto');
+        $user->setEmail('toto@hotmail.fr');
+        $user->setPassword('toto');
+        //Ajouter l'operation de la personne dans ma transaction si on lui precise l'id on pourras modifier un user en ^particulier
+        $entityManager->persist($user);//
+        $entityManager->flush();execute la persistance la bdd
+        //execute la transaction
+        return $this->render('user/index.html.twig', [
+            'user' => $user,
+        ]);
+exemple d'ajout dans la base
+####################################################
+
+
+
+curl coté client curl + methode
+
+api coté serveur crée
+
+####################################################
+
+faire communiquer 2 serveur dans un docker
+
+docker create network nomdunetwork
+docker network inspect lucas   pour inspecter un reseau docker et ip
+
+modifier dans les config le serveur et mettre dans le serveur client external pour lui dire de communiquer à l'exterieur
+
+###############################################################################
+Upload de fichiers en PHP. Pour télécharger des fichiers sur le serveur, il vous faut un formulaire munis d'un champ de type file.
+ Vous devez rajouter l'attribut enctype ayant pour valeur :
+ 'multipart/form-data', ce qui veut dire que votre formulaire va pouvoir transférer des données de type binaire
+
+#################################################"
+http://localhost:7102/api
+#############faker###################
+composer require --dev orm-fixtures
+
+composer require fakerphp/faker --dev
+php bin/console doctrine:fixtures:load   permet denvoyer les ficture en bdd
+########################entity manager##########
+
+1. Le rôle de l’EntityManager
+
+L’EntityManager est l’objet permettant d’effectuer les opérations liées à l’altération des données,
+ à savoir les requêtes de type INSERT, UPDATE et DELETE.
+
+
+#############################phpUnit##############################
+composer require --dev symfony/test-pack
+php bin/phpunit
+
+TestCase classe de test symfony
+
+./bin/phpunit --filter <nomdutest>
+
+permet de filter les test
+
+#################documentation##################################
+    /**
+     * @param integer $test
+     * @return integer
+     * @todo use the kernelTestCase
+     */
+exemple de documentation test
+
+########################################" controle de controller test
+pour controler un controller avec un test
+crée un class controllerTest
+
+serveur uat testing
