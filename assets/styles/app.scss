@@ -27,6 +27,13 @@ body .navbar-toggler{
     transition: box-shadow 0.15s ease-in-out;
 
 }
+
+.navbar-nav .nav-link:hover{
+    background-color: lightgray;
+}
+
+//////////////////////////fin navbar////////////////////////////////////
+
 body .imgLion{
     margin-top: 100px;
     border: solid;
@@ -44,6 +51,7 @@ body .displayButton{
 body .blockDev{
     border: solid;
     margin-left:10% ;
+
 }
 
 //text home
@@ -127,14 +135,72 @@ body .blockDev{
     transition-delay: 0.6s;
 }
 
+//////PageLogin////////////////////////////////////////////
 
-footer{
-        width: 100%;
-        bottom: 0;
-        margin-top: 10%;
+section#containerLogin.container{
+    margin-top: 5%;
+}
+
+/////////Page Contact/////////
+html body h1#h1Contact{
+    margin: 3% 0% 3% 2%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto ;
+    background-color: white;
+    padding: 10px;
+}
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+body div#containerContact.container{
+    justify-content: space-evenly;
+}
+
+
+#github {
+    width: 100%;
+    height: 100px;
+    border: none;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+#github img {
+
+    height: 90%;
+
+}
+#github:hover {
+
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.16) 50%, rgba(0, 0, 0, 0.16) 80%);
+
 
 }
 
+
+#github img:active {
+    filter: invert(100%);
+}
+
+
+#github:active {
+    background: black;
+    transform: translateY(4px);
+}
+
+/////////////////////////////////media//////////////////
 @media only screen and (max-width: 800px) {
     .container-sm, .container{
         flex-direction: column;
@@ -154,3 +220,4 @@ footer{
 
 }
 
+///////////////////////////fin media/////////////////////////////

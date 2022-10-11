@@ -3,13 +3,21 @@
 {% block title %}contact{% endblock %}
 
 {% block body %}
-    <h1> contact register </h1>
-<div class="container">
+    <h1 id="h1Contact"> contact register </h1>
+<div class="container" id="containerContact">
     {% for message in app.flashes('success') %}
     <div class="alert alert-success mt-4">
         {{message}}
     </div>
     {% endfor %}
     {{ form(form) }}
+
+    <div class="grid-container">
+        <div class="grid-item"><a href="https://github.com/lucasfarroni">
+                <button id="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github"></button>
+            </a></div>
+        <div class="grid-item">linkedin</div>
+        <div class="grid-item">mail</div>
+    </div>
 </div>
 {% endblock %}
